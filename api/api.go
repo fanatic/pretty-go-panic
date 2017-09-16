@@ -52,21 +52,21 @@ func upload(c *gin.Context) {
 
 goroutine 1 [running]:
 main.Example(0x2080c3f50, 0x2, 0x4, 0x425c0, 0x5, 0xa)
-				/Users/fanatic/go/main.go:9 +0x64
+	/Users/fanatic/go/main.go:9 +0x64
 main.main()
-				/Users/fanatic/go/main.go:5 +0x85
+	/Users/fanatic/go/main.go:5 +0x85
 
 goroutine 2 [runnable]:
 runtime.forcegchelper()
-				/Users/fanatic/go/src/runtime/proc.go:90
+	/Users/fanatic/go/src/runtime/proc.go:90
 runtime.goexit()
-				/Users/fanatic/go/src/runtime/asm_amd64.s:2232 +0x1
+	/Users/fanatic/go/src/runtime/asm_amd64.s:2232 +0x1
 
 goroutine 3 [runnable]:
 runtime.bgsweep()
-				/Users/fanatic/go/src/runtime/mgc0.go:82
+	/Users/fanatic/go/src/runtime/mgc0.go:82
 runtime.goexit()
-				/Users/fanatic/go/src/runtime/asm_amd64.s:2232 +0x1`
+	/Users/fanatic/go/src/runtime/asm_amd64.s:2232 +0x1`
 	}
 	fullPath := false
 	p := defaultPalette
