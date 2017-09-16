@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pretty Go Panic</title>
+  <link rel="shortcut icon" href="/public/favicon.png">
+  <link rel="apple-touch-icon" href="/public/favicon.png">
+  <link rel="stylesheet" href="/public//font-awesome.min.css">
+  <link rel="stylesheet" href="/public//bulma.min.css">
+</head>
+
+<body>
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Paste your Go panic
+        </h1>
+        <h2 class="subtitle">
+          Prettify your Go panic stack trace
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <form class="container" action="/" method="POST">
+      <!--
+      <div class="field ">
+        <div class="control">
+          <div class="file has-name is-right">
+            <label class="file-label">
+              <input class="file-input" type="file" name="file">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fa fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    -->
+      <div class="field">
+        <div class="control">
+          <textarea class="textarea is-small" rows="10" name="text" placeholder="Panic: oops!
+
+goroutine 1 [running]:
+main.Example(0x2080c3f50, 0x2, 0x4, 0x425c0, 0x5, 0xa)
+        /main.go:9 +0x64
+main.main()
+        /main.go:5 +0x85">{{ .rawPanic }}</textarea>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary is-large" type="submit">
+            Format
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Parsed panic:</h1>
+      <div class="content">
+          <pre style="font-family: 'Courier New', Courier, monospace">{{ .buckets }}</pre>
+      </div>
+      {{ if .error }}
+      <article class="message is-danger">
+        <div class="message-body">
+          {{ .error }}
+        </div>
+      </article>
+      {{ end }}
+      {{ if .showGotracebackTip }}
+      <article class="message is-info">
+        <div class="message-header">
+          <p>GOTRACEBACK Tip</p>
+        </div>
+        <div class="message-body">
+          Starting with Go 1.6, <code>GOTRACEBACK</code> defaults to single instead of all.
+          <br />
+          <code>export GOTRACEBACK=all</code> in Bash or <code>set GOTRACEBACK=all</code> on Windows to see all goroutines.
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+  <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            Using <strong>panicparse</strong> by <a href="https://github.com/maruel/panicparse">maruel</a>.
+          </p>
+          <p>
+            <a href="https://github.com/fanatic/pretty-go-panic">
+              <span class="icon"><i class="fa fa-github"></i></span>
+              Source
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+</body>
+
+</html>
